@@ -8,7 +8,6 @@ import com.adjust.sdk.Adjust
 import com.adjust.sdk.AdjustAdRevenue
 import com.adjust.sdk.AdjustConfig
 import com.applovin.enterprise.apps.demoapp.R
-
 import com.applovin.enterprise.apps.demoapp.ui.BaseAdActivity
 import com.applovin.mediation.MaxAd
 import com.applovin.mediation.MaxAdRevenueListener
@@ -23,7 +22,7 @@ import com.applovin.sdk.AppLovinSdkUtils
  * Created by Harry Arakkal on 9/17/2019
  */
 class ProgrammaticBannerAdActivity : BaseAdActivity(),
-        MaxAdViewAdListener, MaxAdRevenueListener {
+    MaxAdViewAdListener, MaxAdRevenueListener {
     private lateinit var adView: MaxAdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +33,7 @@ class ProgrammaticBannerAdActivity : BaseAdActivity(),
         setupCallbacksRecyclerView()
 
         adView = MaxAdView("YOUR_AD_UNIT_ID", this)
+//        adView = MaxAdView("e64e76f1f4b577f2", this)
 
         adView.setListener(this)
         adView.setRevenueListener(this)
@@ -41,7 +41,8 @@ class ProgrammaticBannerAdActivity : BaseAdActivity(),
         val isTablet = AppLovinSdkUtils.isTablet(this)
         val heightPx = AppLovinSdkUtils.dpToPx(this, if (isTablet) 90 else 50)
 
-        adView.layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightPx)
+        adView.layoutParams =
+            FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heightPx)
         adView.setBackgroundColor(Color.BLACK)
 
         val rootView = findViewById<ViewGroup>(android.R.id.content)
@@ -94,8 +95,7 @@ class ProgrammaticBannerAdActivity : BaseAdActivity(),
 
     //region MAX Ad Revenue Listener
 
-    override fun onAdRevenuePaid(ad: MaxAd?)
-    {
+    override fun onAdRevenuePaid(ad: MaxAd?) {
         logCallback()
 
         val adjustAdRevenue = AdjustAdRevenue(AdjustConfig.AD_REVENUE_APPLOVIN_MAX)

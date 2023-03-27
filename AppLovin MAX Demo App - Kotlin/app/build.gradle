@@ -6,7 +6,8 @@ def isLocalAppLovinWorkspace = file("../../../Android-SDK/build.gradle.kts").exi
 android {
     compileSdkVersion 31
     defaultConfig {
-        applicationId "com.applovin.enterprise.apps.demoapp"
+//        applicationId "com.applovin.enterprise.apps.demoapp"
+        applicationId "com.test"
         minSdkVersion 16
         targetSdkVersion 31
         versionCode 10000
