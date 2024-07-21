@@ -1,5 +1,54 @@
 # Changelog
 
+## 22.6.3.0
+* Certified with Smaato SDK 22.6.3.
+
+## 22.6.2.0
+* Certified with Smaato SDK 22.6.2.
+
+## 22.6.1.0
+* Certified with Smaato SDK 22.6.1.
+* Remove deprecated callbacks `onRewardedAdVideoStarted()` and `onRewardedAdVideoCompleted()`.
+
+## 22.6.0.0
+* Certified with Smaato SDK 22.6.0.
+
+## 22.5.1.0
+* Certified with Smaato SDK 22.5.1.
+* Improve error handling.
+
+## 22.5.0.0
+* Certified with Smaato SDK 22.5.0.
+
+## 22.4.0.0
+* Certified with Smaato SDK 22.4.0.
+
+## 22.3.2.0
+* Certified with Smaato SDK 22.3.2.
+
+## 22.3.1.0
+* Certified with Smaato SDK 22.3.1.
+
+## 22.3.0.0
+* Certified with Smaato SDK 22.3.0.
+
+## 22.2.0.0
+* Certified with Smaato SDK 22.2.0.
+
+## 22.1.2.0
+* Certified with Smaato SDK 22.1.2.
+
+## 22.1.1.0
+* Certified with Smaato SDK 22.1.1.
+* Remove the `getPrivacySetting()` function and call privacy methods directly.
+* Now requires MAX SDK version 9.14.0 or higher.
+
+## 22.1.0.1
+* Add support for native ad view ads.
+
+## 22.1.0.0
+* Certified with Smaato SDK 22.1.0.
+
 ## 22.0.3.0
 * Certified with Smaato SDK 22.0.3.
 

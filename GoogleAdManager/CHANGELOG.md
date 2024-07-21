@@ -1,5 +1,68 @@
 # Changelog
 
+## 23.2.0.0
+* Certified with GoogleAdManager SDK 23.2.0.
+
+## 23.1.0.0
+* Certified with GoogleAdManager SDK 23.1.0.
+
+## 23.0.0.1
+* Update adaptive banner width calculation to always use `Display.getMetrics()` instead of using `WindowMetrics.getBounds()` when available. The latter returns the full width of the device instead of the app window.
+* Remove deprecated callbacks `onRewardedAdVideoStarted()`, `onRewardedAdVideoCompleted()`, `onRewardedInterstitialAdVideoStarted()` and `onRewardedInterstitialAdVideoCompleted`.
+
+## 23.0.0.0
+* Certified with Google SDK 23.0.0
+* Now requires minimum Android API level be 21 or higher.
+
+## 22.6.0.1
+* Use `apply()` when saving to `SharedPreferences` to prevent ANRs.
+
+## 22.6.0.0
+* Certified with GoogleAdManager SDK 22.6.0.
+* Improve error handling.
+
+## 22.5.0.0
+* Certified with GoogleAdManager SDK 22.5.0.
+
+## 22.4.0.1
+* Fix rendering of native ad video content in React Native or Flutter.
+
+## 22.4.0.0
+* Certified with GoogleAdManager SDK 22.4.0.
+
+## 22.3.0.0
+* Certified with GoogleAdManager SDK 22.3.0.
+
+## 22.2.0.1
+* Updated the device width measurement logic for adaptive banners to match [AdMob's logic](https://developers.google.com/admob/android/banner/anchored-adaptive).
+
+## 22.2.0.0
+* Certified with GoogleAdManager SDK 22.2.0.
+
+## 22.1.0.3
+* Update CCPA state if granted mid-session.
+
+## 22.1.0.2
+* Fix `int java.lang.Integer.intValue()` NPE for native ads.
+
+## 22.1.0.1
+* Support for native ads in external plugins (e.g. React Native).
+
+## 22.1.0.0
+* Certified with GoogleAdManager SDK 22.1.0.
+* Remove the `getPrivacySetting()` function and call privacy methods directly.
+* Now requires MAX SDK version 9.14.0 or higher.
+
+## 22.0.0.2
+* Re-certified with GoogleAdManager SDK 22.0.0.
+* Remove client-side setting of test device ids.
+
+## 22.0.0.1
+* Downgrade to GoogleAdManager SDK 21.5.0 due to crashes with Fyber SDK 8.2.2.
+
+## 22.0.0.0
+* Certified with GoogleAdManager SDK 22.0.0.
+
 ## 21.5.0.2
 * Fix potential NPE on custom adaptive banner width object.
 
@@ -147,7 +210,7 @@
 ## 20.0.0.0
 * Certified with GoogleAdManager SDK 20.0.0.
 * Remove `setIsDesignedForFamilies()` method. As a result `is_designed_for_families` is not passed to Google anymore.
-* Update deprecated APIs by setting test mode using `RequestConfiguration.Builder.setTestDeviceIds()` and age restricted user using `RequestConfiguration.Builder.setTagForChildDirectedTreatment()`. 
+* Update deprecated APIs by setting test mode using `RequestConfiguration.Builder.setTestDeviceIds()` and age restricted user using `RequestConfiguration.Builder.setTagForChildDirectedTreatment()`.
 
 ## 19.8.0.0
 * Certified with GoogleAdManager SDK 19.8.0.

@@ -1,5 +1,141 @@
 # Changelog
 
+## 6.1.0.6.0
+* Certified with ByteDance SDK 6.1.0.6.
+
+## 6.1.0.5.0
+* Certified with ByteDance SDK 6.1.0.5.
+
+## 6.0.0.5.0
+* Certified with ByteDance SDK 6.0.0.5.
+* Remove String validation for signal.
+
+## 5.9.1.1.0
+* Certified with ByteDance SDK 5.9.1.1.
+
+## 5.9.0.6.0
+* Certified with ByteDance SDK 5.9.0.6.
+
+## 5.9.0.5.0
+* Certified with ByteDance SDK 5.9.0.5.
+
+## 5.9.0.4.0
+* Certified with ByteDance SDK 5.9.0.4.
+
+## 5.9.0.3.0
+* Certified with ByteDance SDK 5.9.0.3.
+
+## 5.9.0.2.0
+* Certified with ByteDance SDK 5.9.0.2.
+
+## 5.8.1.1.0
+* Certified with ByteDance SDK 5.8.1.1.
+* Remove deprecated callbacks `onRewardedAdVideoStarted()` and `onRewardedAdVideoCompleted()`.
+
+## 5.8.1.0.1
+* Update to use asynchronous signal collection API.
+
+## 5.8.1.0.0
+* Certified with ByteDance SDK 5.8.1.0.
+
+## 5.8.0.9.0
+* Certified with ByteDance SDK 5.8.0.9.
+
+## 5.8.0.8.0
+* Certified with ByteDance SDK 5.8.0.8.
+
+## 5.8.0.7.0
+* Certified with ByteDance SDK 5.8.0.7.
+
+## 5.7.0.6.0
+* Certified with ByteDance SDK 5.7.0.6.
+
+## 5.7.0.3.1
+* Downgrade to ByteDance SDK 5.6.0.4 to fix deadlock issue when collecting signal.
+
+## 5.7.0.3.0
+* Certified with ByteDance SDK 5.7.0.3.
+
+## 5.7.0.2.0
+* Certified with ByteDance SDK 5.7.0.2.
+
+## 5.7.0.1.0
+* Certified with ByteDance SDK 5.7.0.1.
+
+## 5.6.0.4.0
+* Certified with ByteDance SDK 5.6.0.4.
+
+## 5.6.0.3.0
+* Certified with ByteDance SDK 5.6.0.3.
+
+## 5.6.0.2.0
+* Certified with ByteDance SDK 5.6.0.2.
+
+## 5.6.0.1.0
+* Certified with ByteDance SDK 5.6.0.1.
+
+## 5.5.0.9.0
+* Certified with ByteDance SDK 5.5.0.9.
+
+## 5.5.0.8.0
+* Certified with ByteDance SDK 5.5.0.8.
+
+## 5.5.0.7.0
+* Certified with ByteDance SDK 5.5.0.7.
+
+## 5.5.0.6.0
+* Certified with ByteDance SDK 5.5.0.6.
+
+## 5.5.0.5.0
+* Certified with ByteDance SDK 5.5.0.5.
+
+## 5.5.0.4.0
+* Certified with ByteDance SDK 5.5.0.4.
+
+## 5.5.0.3.0
+* Certified with ByteDance SDK 5.5.0.3.
+
+## 5.4.1.1.0
+* Certified with ByteDance SDK 5.4.1.1.
+
+## 5.4.1.0.0
+* Certified with ByteDance SDK 5.4.1.0.
+
+## 5.4.0.9.0
+* Certified with ByteDance SDK 5.4.0.9.
+
+## 5.4.0.8.0
+* Certified with ByteDance SDK 5.4.0.8.
+
+## 5.3.0.4.0
+* Certified with ByteDance SDK 5.3.0.4.
+
+## 5.2.0.7.0
+* Certified with ByteDance SDK 5.2.0.7.
+
+## 5.2.0.6.0
+* Certified with ByteDance SDK 5.2.0.6.
+
+## 5.2.0.5.0
+* Certified with ByteDance SDK 5.2.0.5.
+
+## 5.1.1.1.0
+* Certified with ByteDance SDK 5.1.1.1.
+
+## 5.1.1.0.0
+* Certified with ByteDance SDK 5.1.1.0.
+* Remove the `getPrivacySetting()` function and call privacy methods directly.
+* Now requires MAX SDK version 9.14.0 or higher.
+
+## 5.1.0.8.0
+* Certified with ByteDance SDK 5.1.0.8.
+
+## 5.1.0.7.0
+* Certified with ByteDance SDK 5.1.0.7.
+
+## 5.1.0.6.0
+* Certified with ByteDance SDK 5.1.0.6.
+
 ## 5.0.1.1.0
 * Certified with ByteDance SDK 5.0.1.1.
 
@@ -232,7 +368,7 @@
 * Certified with ByteDance SDK 3.8.1.2.
 
 ## 3.8.1.1.1
-* Add error log when user fails to receive reward. 
+* Add error log when user fails to receive reward.
 
 ## 3.8.1.1.0
 * Certified with ByteDance SDK 3.8.1.1.

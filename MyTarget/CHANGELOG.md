@@ -1,5 +1,33 @@
 # Changelog
 
+## 5.21.1.0
+* Certified with MyTarget SDK 5.21.1.
+
+## 5.21.0.0
+* Certified with MyTarget SDK 5.21.0.
+* Remove deprecated callbacks `onRewardedAdVideoStarted()` and `onRewardedAdVideoCompleted()`.
+
+## 5.20.1.0
+* Certified with MyTarget SDK 5.20.1.
+
+## 5.20.0.0
+* Certified with MyTarget SDK 5.20.0.
+
+## 5.19.0.0
+* Certified with MyTarget SDK 5.19.0.
+
+## 5.18.0.0
+* Certified with MyTarget SDK 5.18.0.
+* Update `onNoAd` method with `IAdLoadingError` parameter and update error code mapping.
+
+## 5.17.0.0
+* Certified with MyTarget SDK 5.17.0.
+
+## 5.16.5.0
+* Certified with MyTarget SDK 5.16.5.
+* Remove the `getPrivacySetting()` function and call privacy methods directly.
+* Now requires MAX SDK version 9.14.0 or higher.
+
 ## 5.16.4.0
 * Certified with MyTarget SDK 5.16.4.
 

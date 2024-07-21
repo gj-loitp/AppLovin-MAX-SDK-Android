@@ -1,5 +1,26 @@
 # Changelog
 
+## 6.17.0.0
+* Certified with Facebook SDK 6.17.0.
+* Remove deprecated callbacks `onRewardedAdVideoStarted()`, `onRewardedAdVideoCompleted()`, `onRewardedInterstitialAdVideoStarted()` and `onRewardedInterstitialAdVideoCompleted`.
+
+## 6.16.0.2
+* Fix native banner ad media views not clickable.
+
+## 6.16.0.1
+* Fix native ad media views not clickable.
+
+## 6.16.0.0
+* Certified with Facebook SDK 6.16.0.
+
+## 6.15.0.0
+* Certified with Facebook SDK 6.15.0.
+
+## 6.14.0.0
+* Certified with Facebook SDK 6.14.0.
+* Remove the `getPrivacySetting()` function and call privacy methods directly.
+* Now requires MAX SDK version 9.14.0 or higher.
+
 ## 6.13.7.0
 * Certified with Facebook SDK 6.13.7.
 

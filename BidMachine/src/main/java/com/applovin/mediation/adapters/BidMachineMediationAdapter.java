@@ -31,7 +31,6 @@ import com.applovin.mediation.adapters.bidmachine.BuildConfig;
 import com.applovin.mediation.nativeAds.MaxNativeAd;
 import com.applovin.mediation.nativeAds.MaxNativeAdView;
 import com.applovin.sdk.AppLovinSdk;
-import com.applovin.sdk.AppLovinSdkConfiguration;
 import com.applovin.sdk.AppLovinSdkUtils;
 
 import java.util.ArrayList;
@@ -44,7 +43,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import io.bidmachine.AdsFormat;
 import io.bidmachine.BidMachine;
+import io.bidmachine.BidTokenCallback;
 import io.bidmachine.ImageData;
 import io.bidmachine.InitializationCallback;
 import io.bidmachine.MediaAssetType;
@@ -160,15 +161,22 @@ public class BidMachineMediationAdapter
     }
 
     @Override
-    public void collectSignal(MaxAdapterSignalCollectionParameters parameters, Activity activity, MaxSignalCollectionListener callback)
+    public void collectSignal(final MaxAdapterSignalCollectionParameters parameters, final Activity activity, final MaxSignalCollectionListener callback)
     {
-        log( "Collecting signal..." );
+        log( "Collecting signal for " + parameters.getAdFormat().getLabel() + " ad..." );
 
         updateSettings( parameters );
 
         // NOTE: Must be ran on bg thread
-        String bidToken = BidMachine.getBidToken( getApplicationContext() );
-        callback.onSignalCollected( bidToken );
+        BidMachine.getBidToken( getApplicationContext(), toAdsFormat( parameters ), new BidTokenCallback()
+        {
+            @Override
+            public void onCollected(@NonNull final String bidToken)
+            {
+                log( "Signal collection successful" );
+                callback.onSignalCollected( bidToken );
+            }
+        } );
     }
 
     @Override
@@ -338,8 +346,43 @@ public class BidMachineMediationAdapter
         }
     }
 
+    @Nullable
+    private AdsFormat toAdsFormat(final MaxAdapterSignalCollectionParameters parameters)
+    {
+        MaxAdFormat adFormat = parameters.getAdFormat();
+        if ( adFormat == MaxAdFormat.BANNER )
+        {
+            return AdsFormat.Banner_320x50;
+        }
+        else if ( adFormat == MaxAdFormat.MREC )
+        {
+            return AdsFormat.Banner_300x250;
+        }
+        else if ( adFormat == MaxAdFormat.LEADER )
+        {
+            return AdsFormat.Banner_728x90;
+        }
+        else if ( adFormat == MaxAdFormat.NATIVE )
+        {
+            return AdsFormat.Native;
+        }
+        else if ( adFormat == MaxAdFormat.INTERSTITIAL )
+        {
+            return AdsFormat.Interstitial;
+        }
+        else if ( adFormat == MaxAdFormat.REWARDED || adFormat == MaxAdFormat.REWARDED_INTERSTITIAL )
+        {
+            return AdsFormat.Rewarded;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     private void updateSettings(MaxAdapterParameters parameters)
     {
+        // NOTE: BidMachine's iOS SDK requires that the adapter passes the TCFv2 GDPR consent string, the BidMachine Android SDK does not.
         Boolean isAgeRestrictedUser = parameters.isAgeRestrictedUser();
         if ( isAgeRestrictedUser != null )
         {
@@ -490,7 +533,6 @@ public class BidMachineMediationAdapter
         {
             log( "Rewarded ad impression" );
             listener.onRewardedAdDisplayed();
-            listener.onRewardedAdVideoStarted();
         }
 
         @Override
@@ -511,7 +553,6 @@ public class BidMachineMediationAdapter
         public void onAdClosed(@NonNull RewardedAd rewardedAd, boolean finished)
         {
             log( "Rewarded ad closed" );
-            listener.onRewardedAdVideoCompleted();
 
             if ( hasGrantedReward || shouldAlwaysRewardUser() )
             {
@@ -570,6 +611,14 @@ public class BidMachineMediationAdapter
         {
             log( "AdView ad impression" );
             listener.onAdViewAdDisplayed();
+        }
+
+        @Override
+        public void onAdShowFailed(@NonNull BannerView bannerView, @NonNull BMError bmError)
+        {
+            MaxAdapterError maxAdapterError = toMaxError( bmError );
+            log( "AdView ad failed to show with error (" + maxAdapterError + ")" );
+            listener.onAdViewAdDisplayFailed( maxAdapterError );
         }
 
         @Override
@@ -682,6 +731,12 @@ public class BidMachineMediationAdapter
         }
 
         @Override
+        public void onAdShowFailed(@NonNull NativeAd nativeAd, @NonNull BMError bmError)
+        {
+            log( "Native ad failed to show with error (" + bmError + ")" );
+        }
+
+        @Override
         public void onAdClicked(@NonNull NativeAd nativeAd)
         {
             log( "Native ad clicked" );
@@ -709,8 +764,8 @@ public class BidMachineMediationAdapter
                             .setBody( nativeAd.getDescription() )
                             .setCallToAction( nativeAd.getCallToAction() )
                             .setIcon( iconMaxNativeAdImage )
-                            .setMediaView( mediaView )
-                            .setOptionsView( nativeAd.getProviderView( getApplicationContext() ) );
+                            .setOptionsView( nativeAd.getProviderView( getApplicationContext() ) )
+                            .setMediaView( mediaView );
                     if ( AppLovinSdk.VERSION_CODE >= 11_04_03_99 && nativeAd.getMainImage() != null )
                     {
                         MaxNativeAd.MaxNativeAdImage mainImage = new MaxNativeAd.MaxNativeAdImage( nativeAd.getMainImage().getImage() );
@@ -741,7 +796,7 @@ public class BidMachineMediationAdapter
         @Override
         public void prepareViewForInteraction(MaxNativeAdView maxNativeAdView)
         {
-            final List<View> clickableViews = new ArrayList<>();
+            final List<View> clickableViews = new ArrayList<>( 5 );
             if ( AppLovinSdkUtils.isValidString( getTitle() ) && maxNativeAdView.getTitleTextView() != null )
             {
                 clickableViews.add( maxNativeAdView.getTitleTextView() );
